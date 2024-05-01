@@ -1,73 +1,25 @@
-/* function add(a, b){
-    return a+b;
-} */
+const express = require("express");
+const app = express();
+const port = 3000;
 
-/* var add = function add(a, b){
-    return a+b;
-} */
+app.get('/', function (req, res){
+    res.send("Weclome to my world");
+})
 
-/* var add = (a,b) => {return a + b} */
+app.get('/testing', (req, res) => {
+    res.send("Testing done from testing page !!");
+})
 
-/* var add = (a, b) => a+b;
+app.get('/dosa', (req, res) => {
+    var customized_dosa = {
+        name: 'Masala Dosa',
+        size: '10 cm',
+        is_sambhar: true,
+        is_chutney: true
+    }
+    res.send(customized_dosa);
+})
 
-var result = add(2,3);
-console.log(result); */
-
-// Self Callable function
-/* (function(a,b){
-    console.log('Hello Samy !!');
-})(); */
-
-// Callback functions (Method 1)
-/* function callback(){
-    console.log("Adding successfully !!");
-}
-
-const add = function (a, b, callback){
-    var result = a + b;
-    console.log(`Result : ${result}`);
-    callback();
-}
-
-add(2,65, callback);
-*/
-
-// Callback functions (Method 2) [Inline Function]
-/* const add = function (a, b, callback){
-    var result = a + b;
-    console.log(`Result : ${result}`);
-    callback();
-}
-
-add(4,6, function(){
-    console.log("Add completed in inline function");
+app.listen(port, ()=> {
+    console.log(`Listening on port no : ${port}`);
 });
-
-add(2,6, () => console.log("add done - very short method by Arrow function")); */
-
-var fs = require('fs');
-var os = require('os');
-const notes = require('./notes');
-var _ = require('lodash');
-
-var user = os.userInfo();
-console.log(user);
-console.log(user.username);
-
-// (Filepath, data, Callback())
-fs.appendFile('greeting.txt', `hi ${user.username} ! \n`, () => {
-    console.log("File is created !!");
-});
-
-
-var age = notes.age
-var result = notes.addNumber(age+2 , 10);
-
-console.log(`Age from Notes file : ${age}`)
-console.log(`Result is now : ${result}`);
-
-// using Lodash 
-var data  = ["person", "person", 1, 2, 4, 5, 'name', 'age', 'name', '2'];
-var filter = _.uniq(data);
-console.log(filter);
-console.log(_.isString(true));
